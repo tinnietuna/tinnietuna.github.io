@@ -1,1 +1,18 @@
-Hello World
+import folium
+import requests
+import pandas as pd
+
+val_stats = pd.read_csv("val_stats.csv")
+val_stats.head()
+
+val_stats.region.unique()
+
+val_stats['region'] = val_stats['region'].fillna('NA')
+
+val_stats = val_stats.set_index("region")
+val_stats = val_stats.drop(['EU', 'AP', 'KR', 'BR', 'LAT'])
+
+val_stats.columns
+val_stats = val_stats.drop(columns = ['name', 'tag'])
+
+val_stats
